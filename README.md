@@ -87,14 +87,14 @@ pip install --user gunicorn # on Fedora you may need to install libffi-devel bef
 Since you can import the webapp through `graphdash:app`, you can serve it with `Gunicorn`:
 
 ```bash
-gunicorn -b 0.0.0.0:8888 --pid server.pid graphdash:app &
+gunicorn -b 0.0.0.0:8888 --pid server.pid graphdash:app
 ```
 
 The configuration file of the webapp can be set with the `CONF` environment variable.
 With `Gunicorn`, you can pass environment variables to the workers with `--env`:
 
 ```bash
-gunicorn -b 0.0.0.0:8888 --pid server.pid --env CONF=docs/example.conf graphdash:app &
+gunicorn -b 0.0.0.0:8888 --pid server.pid --env CONF=docs/example.conf graphdash:app
 ```
 
 But you should *not* use these commands yourself, that is what `GraphDashManage` is for!
@@ -112,11 +112,11 @@ ALL_MODES=(
    ['prod']="docs/example.conf"
    ['test']="docs/example.conf"
 )
-
 ALL_PORTS=(
    ['prod']=1234
    ['test']=5678
 )
+WORKERS=3
 ```
 
 Then you can manage multiple instances of `GraphDash` using `Gunicorn` with:
